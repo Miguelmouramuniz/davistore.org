@@ -1,84 +1,221 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Davi Store</title>
-  <style>
-    :root{
-      --btn-bg:#0b84ff;
-      --btn-bg-hover:#0666d6;
-      --btn-color:#fff;
-      --btn-radius:16px;
-      --btn-padding-vertical:28px;
-      --btn-padding-horizontal:56px;
-      --font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Loja de Kits</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: 'Orbitron', sans-serif;
+        background: #000;
+        color: white;
+    }/* Fundo animado estilo espaço */
+.space-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    z-index: -1;
+}
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: move 10s linear infinite;
+}
+@keyframes move {
+    from { transform: translateY(0); }
+    to { transform: translateY(100vh); }
+}
+
+/* Banner roxo (usar imagem gerada) */
+.banner {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-bottom: 4px solid #7a00ff;
+}
+
+/* Moldura roxa */
+.container {
+    margin: 20px;
+    padding: 15px;
+    border: 3px solid #7a00ff;
+    border-radius: 15px;
+}
+
+.kit {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.kit img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #7a00ff;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #7a00ff;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* PC - horizontal */
+@media (min-width: 800px) {
+    .kit {
+        flex-direction: row;
+        align-items: center;
     }
-    html,body{
-      height:100%;
-      margin:0;
-      background:#ffffff;
-      font-family:var(--font-family);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+    .kit img {
+        width: 250px;
     }
-    .wrap{
-      min-height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-      box-sizing:border-box;
-    }
-    .box{
-      text-align:center;
-      width:100%;
-      max-width:720px;
-    }
-    h1{
-      margin:0 0 20px 0;
-      font-size:20px;
-      color:#111;
-      font-weight:700;
-    }
-    .btn{
-      display:inline-block;
-      background:var(--btn-bg);
-      color:var(--btn-color);
-      text-decoration:none;
-      border:none;
-      border-radius:var(--btn-radius);
-      padding:var(--btn-padding-vertical) var(--btn-padding-horizontal);
-      font-size:22px;
-      font-weight:800;
-      box-shadow:0 10px 30px rgba(11,132,255,0.18);
-      transition:transform .12s ease, background .12s ease, box-shadow .12s ease;
-      cursor:pointer;
-    }
-    .btn:active{ transform:translateY(1px) scale(.998); }
-    .btn:hover{ background:var(--btn-bg-hover); box-shadow:0 14px 40px rgba(6,102,214,0.18); }
-    .small{
-      margin-top:18px;
-      color:#666;
-      font-size:13px;
-    }
-    @media (max-width:480px){
-      .btn{ width:100%; padding-left:20px; padding-right:20px; box-sizing:border-box; font-size:20px; }
-    }
-  </style>
+}
+
+footer {
+    margin: 40px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+footer a { color: #b26cff; }
+/* Fonte futurística */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body { font-family: 'Orbitron', sans-serif; }
+
+/* Botão animado */
+.buy {
+    background:#7a00ff;
+    border:none;
+    padding:10px 20px;
+    color:white;
+    cursor:pointer;
+    border-radius:6px;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform:scale(1); }
+    50% { transform:scale(1.05); }
+    100% { transform:scale(1); }
+}
+
+.banner img { width:100%; margin-bottom:20px; }
+
+</style>
 </head>
-<body>
-  <div class="wrap">
-    <div class="box" role="main" aria-labelledby="title">
-      <h1 id="title">Entrar na loja</h1>
+<body><!-- Fundo animado --><div class="space-bg" id="space"></div><!-- Banner --><img src="BANNER_AQUI.png" alt="Banner" class="banner" /><div class="container">
+    <div class="kit">
+        <img src="IMAGEM_DO_KIT.png" alt="Kit" />
+        <div>
+            <h2>Nome do Kit</h2>
+            <p>Descrição completa do kit com detalhes.</p>
+            <p><strong>Preço: R$00,00</strong></p>
+            <button class="buy-btn">Comprar</button>
+        </div>
+    </div><!-- Copiar e colar para mais kits -->
 
-      <!-- botão gigante com o novo link -->
-      <a class="btn" href="https://www.roblox.com/share?code=a2e998aae4854546abad183cca45c5a5&type=Server" target="_blank" rel="noopener noreferrer">
-        Entrar na loja
-      </a>
+</div><footer>
+    <a href="#">Política de Privacidade</a>
+</footer><script>
+// Gerar estrelas do fundo
+const bg = document.getElementById('space');
+for (let i = 0; i < 120; i++) {
+    let star = document.createElement('div');
+    star.classList.add('star');
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.top = Math.random() * 100 + 'vh';
+    star.style.animationDuration = (6 + Math.random() * 6) + 's';
+    bg.appendChild(star);
+}
+</script><!-- Banner no topo -->
+<div class="banner">
+    <img src="BANNER_AQUI.png" alt="Banner" />
+</div>
 
-      <div class="small">Abre em nova aba — link oficial do Roblox.</div>
+<!-- Área de produtos -->
+<div class="products">
+    <!-- Repetir 6 vezes -->
+    <!-- Produto 1 -->
+    <div class="card">
+        <img src="imagem1.png" alt="Kit 1" />
+        <h2>Kit Diamante</h2>
+        <p>Descrição do kit aqui.</p>
+        <span class="price">R$ 19,90</span>
+        <button class="buy">Comprar</button>
     </div>
-  </div>
+
+    <!-- Produto 2 -->
+    <div class="card">
+        <img src="imagem2.png" alt="Kit 2" />
+        <h2>Kit Netherite</h2>
+        <p>Descrição do kit aqui.</p>
+        <span class="price">R$ 39,90</span>
+        <button class="buy">Comprar</button>
+    </div>
+
+    <!-- Produto 3 -->
+    <div class="card">
+        <img src="imagem3.png" alt="Kit 3" />
+        <h2>Kit Místico</h2>
+        <p>Descrição do kit aqui.</p>
+        <span class="price">R$ 29,90</span>
+        <button class="buy">Comprar</button>
+    </div>
+
+    <!-- Produto 4 -->
+    <div class="card">
+        <img src="imagem4.png" alt="Kit 4" />
+        <h2>Kit VIP</h2>
+        <p>Descrição do kit aqui.</p>
+        <span class="price">R$ 49,90</span>
+        <button class="buy">Comprar</button>
+    </div>
+
+    <!-- Produto 5 -->
+    <div class="card">
+        <img src="imagem5.png" alt="Kit 5" />
+        <h2>Kit Ultra</h2>
+        <p>Descrição do kit aqui.</p>
+        <span class="price">R$ 59,90</span>
+        <button class="buy">Comprar</button>
+    </div>
+
+    <!-- Produto 6 -->
+    <div class="card">
+        <img src="imagem6.png" alt="Kit 6" />
+        <h2>Kit Supremo</h2>
+        <p>Descrição do kit aqui.</p>
+        <span class="price">R$ 79,90</span>
+        <button class="buy">Comprar</button>
+    </div>
+</div>
+
+<!-- Política de Privacidade -->
+<footer>
+    <a href="#">Política de Privacidade</a>
+</footer>
+
 </body>
 </html>
